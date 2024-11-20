@@ -78,3 +78,24 @@ function addData() {
         });
     }
 }
+
+// Función editar
+function editRow(row) {
+    // Obtener valores de fila
+    const nameCell = row.cells[0];
+    const lastnameCell = row.cells[1];
+    const tuitionCell = row.cells[2];
+    const noteCell = row.cells[3];
+
+    // Colocar los valores de fila los inputs
+    document.getElementById('name').value = nameCell.textContent;
+    document.getElementById('lastname').value = lastnameCell.textContent;
+    document.getElementById('tuition').value = tuitionCell.textContent;
+    document.getElementById('note').value = noteCell.textContent;
+
+    // Guardar el índice de la fila que se está editando
+    editRowIndex = row.rowIndex - 1;
+
+
+    document.getElementById('addButton').textContent = 'Guardar cambios';
+}
