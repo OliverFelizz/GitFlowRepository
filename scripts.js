@@ -99,3 +99,29 @@ function editRow(row) {
 
     document.getElementById('addButton').textContent = 'Guardar cambios';
 }
+
+// Función para eliminar una fila
+function deleteRow(row) {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "No podrás deshacer esta acción.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const table = document.getElementById('data-table').getElementsByTagName('tbody')[0];
+            table.deleteRow(row.rowIndex - 1); // Eliminar la fila seleccionada
+
+            Swal.fire({
+                title: 'Eliminado',
+                text: 'La fila ha sido eliminada.',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            });
+        }
+    });
+}
